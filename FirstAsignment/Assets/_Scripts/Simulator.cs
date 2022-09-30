@@ -6,7 +6,6 @@ using Random = UnityEngine.Random;
 
 public class Simulator : MonoBehaviour
 {
-
     public static Action<string,string,DateTime> OnNewPlayer; //Name, Country and date
     public static Action<DateTime> OnNewSession;
     public static Action<DateTime> OnEndSession;
@@ -56,8 +55,6 @@ public class Simulator : MonoBehaviour
             Countries.Add(((AllCountries)rdm).ToString());
         }
         MakeOnePlayer();
-       
-     
     }
 
     void MakeOnePlayer()
