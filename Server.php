@@ -1,20 +1,29 @@
 <?php
+    include ("dbconnection.php")
 
-$servername = "localhost";
+    //Check connection
 
-// user info
-$name = $_POST["userName"];
-$country = $_POST["country"];
-$date = $_POST["date"];
+    if(!$connection)
+    {
+        die("no connection" . mysqli_connect_error());
+    }
+    else
+    echo "<h1>Connected</h1>"."<br>";
 
-//Check connection
-if($conn->connect_error)
-{
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected succesfully";
+    $name = $_POST["name"];
+    $country = $_POST["country"];
+    $date = $_POST["date"];
+    
+    $sql = "INSERT INTO UserData (name,country,date)
+            VALUES('".$name."','".$country."','".$date."')";
+    $result = mysqli_query($connection,$sql);
 
-$sql = "SELECT name FROM names where name = " . $conn->connect_error);
 
+    if(!result)
+    {
+        echo "Wrong";
+    }
+    else
+    echo "Good";
 
-$result = $conn->query($sql);
+?>
