@@ -18,14 +18,17 @@ public class UserData
         form.AddField("name", name);
 
         Debug.Log(form.data.GetValue(1));
-        //form.AddField("country", country);
-        //form.AddField("date", date.ToString("yyyy-MM-dd HH:mm:ss"));
+        form.AddField("country", country);
+        form.AddField("date", date.ToString("yyyy-MM-dd HH:mm:ss"));
 
-        using (WWW www = new WWW(url,form))
+        WWW www = new WWW(url, form);
+        yield return www;
+
+        if (!string.IsNullOrEmpty(www.error))
         {
-            yield return www;
+            Debug.Log(www.error);
         }
-
+        else Debug.Log(www.text);
     }
 
     DateTime date;

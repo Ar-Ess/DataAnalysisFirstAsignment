@@ -21,6 +21,10 @@
     $name = $_POST["name"];
     $country = $_POST["country"];
     $date = $_POST["date"];
+
+    echo $name;
+    echo $country;
+    echo $date;
     
     $sql = "INSERT INTO UserData (name,country,date)
             VALUES('".$name."','".$country."','".$date."')";
