@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AnalysisRecolector : MonoBehaviour
 {
-    [SerializeField] private string url;
+    [SerializeField] private string url = null;
 
     private void OnEnable()
     {

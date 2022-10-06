@@ -13,13 +13,19 @@ public class UserData
 
     public IEnumerator SendData(string url)
     {
-        using (WWW www = new WWW(url))
+        Debug.Log(name);
+        WWWForm form = new WWWForm();
+        form.AddField("name", name);
+
+        Debug.Log(form.data.GetValue(1));
+        //form.AddField("country", country);
+        //form.AddField("date", date.ToString("yyyy-MM-dd HH:mm:ss"));
+
+        using (WWW www = new WWW(url,form))
         {
             yield return www;
-            //www.date = date;
-            //www.name = name;
-            //www.county = country;
         }
+
     }
 
     DateTime date;

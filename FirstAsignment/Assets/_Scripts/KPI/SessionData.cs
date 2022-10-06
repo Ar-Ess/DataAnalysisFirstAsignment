@@ -22,6 +22,7 @@ public class SessionData
         using (WWW www = new WWW(url))
         {
             yield return www;
+            Debug.Log("conected");
             //www.date = date;
             //www.state = (int)state;
         }
