@@ -11,7 +11,7 @@ enum SessionState
 
 public class SessionData
 {
-    public SessionData(DateTime startDate, bool start)
+    public SessionData(DateTime date, bool start)
     {
         this.date = date;
         state = start ? SessionState.SESSION_START : SessionState.SESSION_END;
