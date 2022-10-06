@@ -1,6 +1,20 @@
 <?php
     include ("dbconnection.php")
 
+
+    //Create connection
+    function Connect()
+    {
+        $host="localhost";
+        $database="jordiea3";
+        $user="jordiea3";
+        $password="NcpbTyykNZ";
+        $error="Cant connect";
+        $con = mysqli_connect($host,$user,$password);
+        mysqli_select_db($con,$database) or die("Unable connect to database");
+    }
+
+    Connect();
     //Check connection
 
     if(!$connection)
