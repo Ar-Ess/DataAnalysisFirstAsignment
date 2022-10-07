@@ -17,15 +17,15 @@ public class SessionData
         state = start ? SessionState.SESSION_START : SessionState.SESSION_END;
     }
 
-    public IEnumerator SendData(string url)
+    public WWWForm ProcessData()
     {
-        using (WWW www = new WWW(url))
-        {
-            yield return www;
-            Debug.Log("conected");
-            //www.date = date;
-            //www.state = (int)state;
-        }
+        WWWForm form = new WWWForm();
+        int s = (int)state;
+
+        form.AddField("date", date.ToString("yyyy-MM-dd HH:mm:ss"));
+        form.AddField("state", s.ToString());
+
+        return form;
     }
 
     DateTime date;

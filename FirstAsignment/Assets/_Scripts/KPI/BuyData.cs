@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Networking;
 
 public class BuyData
 {
@@ -11,14 +9,13 @@ public class BuyData
         this.date = date;
     }
 
-    public IEnumerator SendData(string url)
+    public WWWForm ProcessData()
     {
-        using (WWW www = new WWW(url))
-        {
-            yield return www;
-            //www.date = date;
-            //www.id = id;
-        }
+        WWWForm form = new WWWForm();
+        form.AddField("date", date.ToString("yyyy-MM-dd HH:mm:ss"));
+        form.AddField("id", id.ToString());
+
+        return form;
     }
 
     DateTime date;
