@@ -26,8 +26,8 @@
     echo $country;
     echo $date;
     
-    $sql = "INSERT INTO UserData (name,country,date)
-            VALUES('".$name."','".$country."','".$date."')";
+    $sql = "INSERT INTO Users (Name,Country,Date)
+            VALUES('$name','$country','$date')";
     $result = mysqli_query($connection,$sql);
 
 
