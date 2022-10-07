@@ -15,27 +15,18 @@
     {
         die("no connection" . mysqli_connect_error());
     }
-    else
-    echo "<h1>Connected</h1>"."<br>";
 
     $name = $_POST["name"];
     $country = $_POST["country"];
     $date = $_POST["date"];
-
-    echo $name;
-    echo $country;
-    echo $date;
     
     $sql = "INSERT INTO Users (Name,Country,Date)
             VALUES('$name','$country','$date')";
     $result = mysqli_query($connection,$sql);
 
+    $last_id = $connection->insert_id;
 
-    if(!result)
-    {
-        echo "Wrong";
-    }
-    else
-    echo "Good";
+
+    echo $last_id;
 
 ?>
