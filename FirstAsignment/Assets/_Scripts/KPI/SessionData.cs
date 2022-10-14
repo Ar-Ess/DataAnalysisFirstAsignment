@@ -22,8 +22,8 @@ public class SessionData
         WWWForm form = new WWWForm();
         int s = (int)state;
 
-        form.AddField("date", date.ToString("yyyy-MM-dd HH:mm:ss"));
-        form.AddField("state", s.ToString());
+        form.AddField("s_date", date.ToString("yyyy-MM-dd HH:mm:ss"));
+        form.AddField("state", s);
 
         return form;
     }

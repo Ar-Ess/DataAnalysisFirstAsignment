@@ -12,7 +12,7 @@ public class BuyData
     public WWWForm ProcessData()
     {
         WWWForm form = new WWWForm();
-        form.AddField("date", date.ToString("yyyy-MM-dd HH:mm:ss"));
+        form.AddField("b_date", date.ToString("yyyy-MM-dd HH:mm:ss"));
         form.AddField("id", id.ToString());
 
         return form;

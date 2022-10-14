@@ -15,7 +15,7 @@ public class UserData
         WWWForm form = new WWWForm();
         form.AddField("name", name);
         form.AddField("country", country);
-        form.AddField("date", date.ToString("yyyy-MM-dd HH:mm:ss"));
+        form.AddField("u_date", date.ToString("yyyy-MM-dd HH:mm:ss"));
 
         return form;
     }
