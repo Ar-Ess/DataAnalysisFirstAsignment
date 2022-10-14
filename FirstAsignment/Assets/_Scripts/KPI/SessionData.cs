@@ -24,7 +24,6 @@ public class SessionData
         int s = (int)state;
 
         form.AddField("s_date", date.ToString("yyyy-MM-dd HH:mm:ss"));
-        form.AddField("state", s);
         form.AddField("s_id", id);
 
         return form;

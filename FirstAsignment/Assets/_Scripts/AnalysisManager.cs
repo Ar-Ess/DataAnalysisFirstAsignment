@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnalysisManager : MonoBehaviour
 {
-    [SerializeField] private string[] userURL = null;
+    [SerializeField] private string[] url = null;
     private int currentPlayerId = 0;
 
     private void OnEnable()
@@ -41,7 +41,7 @@ public class AnalysisManager : MonoBehaviour
 
     public IEnumerator SendData(WWWForm form, int type)
     {
-        WWW www = new WWW(userURL[type], form);
+        WWW www = new WWW(url[type], form);
 
         yield return www;
 
@@ -54,15 +54,21 @@ public class AnalysisManager : MonoBehaviour
         switch (type)
         {
             case 0:
-            CallbackEvents.OnAddPlayerCallback.Invoke((uint)currentPlayerId);
-            currentPlayerId = int.Parse(www.text);
-            break;
+                currentPlayerId = int.Parse(www.text);
+                CallbackEvents.OnAddPlayerCallback.Invoke((uint)currentPlayerId);
+                break;
 
-            case 1: CallbackEvents.OnNewSessionCallback.Invoke((uint)currentPlayerId); break;
+            case 1: 
+                CallbackEvents.OnNewSessionCallback.Invoke((uint)currentPlayerId);
+                break;
 
-            case 2: CallbackEvents.OnEndSessionCallback.Invoke((uint)currentPlayerId); break;
+            case 2: 
+                CallbackEvents.OnEndSessionCallback.Invoke((uint)currentPlayerId); 
+                break;
 
-            case 3: CallbackEvents.OnItemBuyCallback.Invoke(); break;
+            case 3: 
+                CallbackEvents.OnItemBuyCallback.Invoke(); 
+                break;
         }
 
     }
