@@ -293,7 +293,7 @@ MonoBehaviour:
   url:
   - https://citmalumnes.upc.es/~jordiea3/Users.php
   - https://citmalumnes.upc.es/~jordiea3/SessionStart.php
-  - https://citmalumnes.upc.es/~jordiea3/SessionStart.php
+  - https://citmalumnes.upc.es/~jordiea3/SessionEnd.php
   - https://citmalumnes.upc.es/~jordiea3/Item.php
 --- !u!4 &871796384
 Transform:
