@@ -11,9 +11,10 @@ enum SessionState
 
 public class SessionData
 {
-    public SessionData(DateTime date, bool start)
+    public SessionData(DateTime date, bool start, int id)
     {
         this.date = date;
+        this.id = id;
         state = start ? SessionState.SESSION_START : SessionState.SESSION_END;
     }
 
@@ -24,10 +25,12 @@ public class SessionData
 
         form.AddField("s_date", date.ToString("yyyy-MM-dd HH:mm:ss"));
         form.AddField("state", s);
+        form.AddField("s_id", id);
 
         return form;
     }
 
     DateTime date;
     SessionState state;
+    int id = -1;
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AnalysisManager : MonoBehaviour
 {
-    [SerializeField] private string url = null;
+    [SerializeField] private string[] userURL = null;
+    private int currentPlayerId = 0;
 
     private void OnEnable()
     {
@@ -22,13 +23,13 @@ public class AnalysisManager : MonoBehaviour
 
     public void OnNewSession(DateTime date)
     {
-        SessionData session = new SessionData(date, true);
+        SessionData session = new SessionData(date, true, currentPlayerId);
         StartCoroutine(SendData(session.ProcessData(), 1));
     }
 
     public void OnEndSession(DateTime date)
     {
-        SessionData session = new SessionData(date, false);
+        SessionData session = new SessionData(date, false, currentPlayerId);
         StartCoroutine(SendData(session.ProcessData(), 2));
     }
 
@@ -40,7 +41,7 @@ public class AnalysisManager : MonoBehaviour
 
     public IEnumerator SendData(WWWForm form, int type)
     {
-        WWW www = new WWW(url, form);
+        WWW www = new WWW(userURL[type], form);
 
         yield return www;
 
@@ -49,17 +50,19 @@ public class AnalysisManager : MonoBehaviour
             Debug.Log(www.error);
         }
 
-        int id = int.Parse(www.text);
 
         switch (type)
         {
-            case 0: CallbackEvents.OnAddPlayerCallback.Invoke((uint)id) ; break;
+            case 0:
+            CallbackEvents.OnAddPlayerCallback.Invoke((uint)currentPlayerId);
+            currentPlayerId = int.Parse(www.text);
+            break;
 
-            case 1: CallbackEvents.OnNewSessionCallback.Invoke((uint)id); break;
+            case 1: CallbackEvents.OnNewSessionCallback.Invoke((uint)currentPlayerId); break;
 
-            case 2: CallbackEvents.OnEndSessionCallback.Invoke((uint)id); break;
+            case 2: CallbackEvents.OnEndSessionCallback.Invoke((uint)currentPlayerId); break;
 
-            case 3: CallbackEvents.OnItemBuyCallback.Invoke()           ; break;
+            case 3: CallbackEvents.OnItemBuyCallback.Invoke(); break;
         }
 
     }

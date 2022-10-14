@@ -13,7 +13,7 @@ public class BuyData
     {
         WWWForm form = new WWWForm();
         form.AddField("b_date", date.ToString("yyyy-MM-dd HH:mm:ss"));
-        form.AddField("id", id.ToString());
+        form.AddField("b_id", id);
 
         return form;
     }
