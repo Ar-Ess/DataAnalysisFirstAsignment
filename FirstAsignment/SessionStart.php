@@ -18,12 +18,11 @@
     
     //Grab data from sessions
     $sdate = $_POST["s_date"];
-    $state = $_POST["state"];
-    $id = $_POST["s_id"]
+    $id = $_POST["s_id"];
 
      //Insert data sessions into sessions table 
-    $s_sql = "INSERT INTO Sessions (Date,State,ID)
-            VALUES('$sdate','$state','$id')";
+    $s_sql = "INSERT INTO Sessions (StartDate,EndDate,ID)
+            VALUES('$sdate','','$id')";
     $s_result = mysqli_query($connection,$s_sql);
 
 ?>
