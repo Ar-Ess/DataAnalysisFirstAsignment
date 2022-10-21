@@ -18,11 +18,11 @@
     // Grab data from users 
     $date = $_POST["b_date"];
     $id = $_POST["b_id"];
-    $playerID = $_POST["p_id"];
+    $sessionID = $_POST["s_id"];
     
     // Insert data into users table
-    $sql = "INSERT INTO Transactions (Date,ItemID,UserID)
-            VALUES('$date','$id','$playerID')";
+    $sql = "INSERT INTO Transactions (Date,ItemID,SessionID)
+            VALUES('$date','$id','$sessionID')";
     $result = mysqli_query($connection,$sql);
 
 ?>
