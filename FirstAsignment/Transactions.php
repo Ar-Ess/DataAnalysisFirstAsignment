@@ -15,16 +15,14 @@
     {
         die("no connection" . mysqli_connect_error());
     }
-    //Grab data from sessions
-    $sdate = $_POST["s_date"];
-    $id = $_POST["s_id"];
+    // Grab data from users 
+    $date = $_POST["b_date"];
+    $id = $_POST["b_id"];
+    $playerID = $_POST["p_id"];
+    
+    // Insert data into users table
+    $sql = "INSERT INTO Transactions (Date,ItemID,UserID)
+            VALUES('$date','$id','$playerID')";
+    $result = mysqli_query($connection,$sql);
 
-     //Insert data sessions into sessions table 
-    $s_sql = "INSERT INTO Sessions (StartDate,ID)
-            VALUES('$sdate','$id')";
-    $s_result = mysqli_query($connection,$s_sql);
-
-    $sessionID = $connection->insert_id;
-
-    echo $sessionID;
 ?>

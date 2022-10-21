@@ -18,11 +18,11 @@
     
     //Grab data from sessions
     $sdate = $_POST["s_date"];
-    $id = $_POST
+    $id = $_POST["s_id"];
 
      //Insert data sessions into sessions table 
     $s_sql = "UPDATE  Sessions SET EndDate =
-            '$sdate' WHERE ID = $id" ;
+            '$sdate' WHERE SessionID = $id" ;
 
     $s_result = mysqli_query($connection,$s_sql);
 
