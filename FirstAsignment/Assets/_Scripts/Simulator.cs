@@ -71,9 +71,6 @@ public class Simulator : MonoBehaviour
         AddNewPlayer(_currentDate);
     }
 
-    
-   
-
     void AddNewPlayer(DateTime dateTime)
     {
         string name = namegen.GetNextRandomName();
@@ -125,8 +122,6 @@ public class Simulator : MonoBehaviour
         return 5;
 
     }
-
-
 
     #region Probabilistic values
     DateTime GetNewPlayerDate()
@@ -197,7 +192,6 @@ public class Simulator : MonoBehaviour
         else
             MakeOnePlayer();
     }
-
    
     #endregion
 }

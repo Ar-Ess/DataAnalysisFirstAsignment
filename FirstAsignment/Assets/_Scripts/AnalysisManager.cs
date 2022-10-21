@@ -36,7 +36,7 @@ public class AnalysisManager : MonoBehaviour
 
     public void OnBuyItem(int id, DateTime date)
     {
-        BuyData buy = new BuyData(id, date, currentPlayerId);
+        BuyData buy = new BuyData(id, date, currentSessionId);
         StartCoroutine(SendData(buy.ProcessData(), 3));
     }
 
@@ -45,9 +45,6 @@ public class AnalysisManager : MonoBehaviour
         WWW www = new WWW(url[type], form);
 
         yield return www;
-
-        //Debug.Log(type);
-
         
         if (!string.IsNullOrEmpty(www.error))
         {
