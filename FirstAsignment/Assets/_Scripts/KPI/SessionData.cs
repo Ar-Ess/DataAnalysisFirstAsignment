@@ -26,6 +26,8 @@ public class SessionData
         form.AddField("s_date", date.ToString("yyyy-MM-dd HH:mm:ss"));
         form.AddField("s_id", id);
 
+        //Debug.Log(date);
+
         return form;
     }
 

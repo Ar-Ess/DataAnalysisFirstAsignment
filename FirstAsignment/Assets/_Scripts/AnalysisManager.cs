@@ -6,6 +6,7 @@ public class AnalysisManager : MonoBehaviour
 {
     [SerializeField] private string[] url = null;
     private int currentPlayerId = 0;
+    private int currentSessionId = 0;
 
     private void OnEnable()
     {
@@ -29,13 +30,13 @@ public class AnalysisManager : MonoBehaviour
 
     public void OnEndSession(DateTime date)
     {
-        SessionData session = new SessionData(date, false, currentPlayerId);
+        SessionData session = new SessionData(date, false, currentSessionId);
         StartCoroutine(SendData(session.ProcessData(), 2));
     }
 
     public void OnBuyItem(int id, DateTime date)
     {
-        BuyData buy = new BuyData(id, date);
+        BuyData buy = new BuyData(id, date, currentPlayerId);
         StartCoroutine(SendData(buy.ProcessData(), 3));
     }
 
@@ -45,6 +46,9 @@ public class AnalysisManager : MonoBehaviour
 
         yield return www;
 
+        //Debug.Log(type);
+
+        
         if (!string.IsNullOrEmpty(www.error))
         {
             Debug.Log(www.error);
@@ -58,12 +62,13 @@ public class AnalysisManager : MonoBehaviour
                 CallbackEvents.OnAddPlayerCallback.Invoke((uint)currentPlayerId);
                 break;
 
-            case 1: 
+            case 1:
+                currentSessionId = int.Parse(www.text);
                 CallbackEvents.OnNewSessionCallback.Invoke((uint)currentPlayerId);
                 break;
 
             case 2: 
-                CallbackEvents.OnEndSessionCallback.Invoke((uint)currentPlayerId); 
+                CallbackEvents.OnEndSessionCallback.Invoke((uint)currentSessionId); 
                 break;
 
             case 3: 
