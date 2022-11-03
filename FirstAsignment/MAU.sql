@@ -1,4 +1,8 @@
-SELECT count(distinct UserID) as TotalUsers, count(distinct ID) / count(distinct UserID) as D1
-FROM Sessions
-right JOIN Users
-ON UserID = ID AND DATE(StartDate - interval 1 day) = date(Date)
+SELECT distinct date(Dates), count(distinct Sessions.ID)
+FROM Dates
+left JOIN Sessions
+on date(StartDate) <= date(Dates.Dates) and
+date(StartDate) > date(Dates.Dates) - interval 30 day
+where date(Dates) = date(StartDate)
+order by Dates
+ 

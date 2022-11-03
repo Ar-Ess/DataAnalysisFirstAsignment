@@ -1,0 +1,10 @@
+D3 <- read.csv("~/GitHub/DataAnalysisFirstAsignment/FirstAsignment/ResultsCSV/D3.csv", header=FALSE)
+d3 <- as.numeric(D3[2,"V2"])
+rest <- 1 - as.numeric(d3)
+slices <- c(d3,rest)
+lbls <- c("D3", "Rest")
+pct <- round(slices/sum(slices)*100)
+lbls <- paste(lbls,pct)
+lbls <- paste(lbls,"%",sep="")
+pie(slices, labels = lbls, col=rainbow(length(lbls)),main="D3 calculation")
+
